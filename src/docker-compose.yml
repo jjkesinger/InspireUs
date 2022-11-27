@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  inspireus.congress.api:
+    image: ${DOCKER_REGISTRY-}inspireuscongress
+    build:
+      context: .
+      dockerfile: InspireUs.Congress.Api/Dockerfile
+    depends_on:
+      - selenium
+    restart: always
+    networks:
+      - hub_network
+  selenium:
+    image: seleniarm/standalone-firefox:latest
+    shm_size: 2gb
+    restart: always
+    ports:
+      - "4444:4444"
+      - "7900:7900"
+    networks:
+       - hub_network
+  db:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    networks:
+      - hub_network
+  migration_bundle:
+    image: ${DOCKER_REGISTRY-}congress_migrationbdl
+    build:
+      context: .
+      dockerfile: Migrations/Dockerfile
+    networks:
+      - hub_network
+
+networks:
+  hub_network:
+    driver: bridge
