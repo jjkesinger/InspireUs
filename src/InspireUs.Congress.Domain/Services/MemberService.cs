@@ -25,11 +25,10 @@ namespace InspireUs.Congress.Domain.Services
 			return _context.Set<Member>()
 				.AsNoTracking()
 				.Select(member =>
-					new Member(member.FirstName,
+					new Member(member.Id, member.FirstName,
 					member.MiddleName, member.LastName, member.District,
-					member.Party, member.ServiceHistory, member.Id,
-					member.PictureUrl, member.Address, member.Phone,
-					member.WebsiteUrl, member.ContactUrl))
+					member.Party, member.ServiceHistory, member.PictureUrl,
+					member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsyncEnumerable)}")
                 .AsAsyncEnumerable();
 		}
@@ -39,11 +38,10 @@ namespace InspireUs.Congress.Domain.Services
             return await _context.Set<Member>()
                 .AsNoTracking()
 				.Select(member =>
-					new Member(member.FirstName,
-					member.MiddleName, member.LastName, member.District,
-					member.Party, member.ServiceHistory, member.Id,
-					member.PictureUrl, member.Address, member.Phone,
-					member.WebsiteUrl, member.ContactUrl))
+                    new Member(member.Id, member.FirstName,
+                    member.MiddleName, member.LastName, member.District,
+                    member.Party, member.ServiceHistory, member.PictureUrl,
+                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsync)}")
                 .ToListAsync();
 		}
@@ -53,11 +51,10 @@ namespace InspireUs.Congress.Domain.Services
             return _context.Set<Member>()
                 .AsNoTracking()
                 .Select(member =>
-                    new Member(member.FirstName,
+                    new Member(member.Id, member.FirstName,
                     member.MiddleName, member.LastName, member.District,
-                    member.Party, member.ServiceHistory, member.Id,
-                    member.PictureUrl, member.Address, member.Phone,
-                    member.WebsiteUrl, member.ContactUrl))
+                    member.Party, member.ServiceHistory, member.PictureUrl,
+                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersSync)}")
                 .ToList();
         }

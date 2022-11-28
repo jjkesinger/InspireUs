@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using InspireUs.Congress.Domain.Model;
 using InspireUs.Congress.Domain.Services;
+using InspireUs.Congress.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
@@ -11,31 +13,48 @@ namespace InspireUs.Congress.Api.Controllers
     [ApiController]
     [Route("[controller]/[action]")]
     public class SyncController : ControllerBase
-	{
+    {
         private readonly MemberService _memberService;
-        private readonly IConfiguration _configuration;
+        private readonly Uri _seleniumUrl;
 
         public SyncController(MemberService memberService,
-            IConfiguration configuration)
+            [NotNull] IConfiguration configuration)
 		{
-            _configuration = configuration;
+            var url = configuration.GetConnectionString("SeleniumUrl");
+            ArgumentException.ThrowIfNullOrEmpty(url);
+
+            _seleniumUrl = new Uri(url);
             _memberService = memberService;
 		}
 
-        [HttpGet(Name = "Sync")]
-        public async Task<int> Sync()
+        [HttpGet(Name = "SyncMembers")]
+        public async Task<int> SyncMembers()
 		{
             Member[] members;
 
             var options = new FirefoxOptions();
-            var uri = new Uri(_configuration.GetConnectionString("SeleniumUrl"));
-
-            using (var service = new CongressWebScrapingService(uri, options, CreateRemoteWebDriver))
+            using (var service = new CongressWebScrapingService(_seleniumUrl,
+                options, CreateRemoteWebDriver))
             {
-                members = service.GetCongressMembers();
+                members = service.GetCongressGovData();
             }
 
             return await _memberService.AddMembers(members);
+        }
+
+        [HttpGet(Name = "SyncLegislation")]
+        public async Task<int> SyncLegislation()
+        {
+            Legislation[] legislation;
+
+            var options = new FirefoxOptions();
+            using (var service = new LegislationWebScrapingService(_seleniumUrl,
+                options, CreateRemoteWebDriver))
+            {
+                legislation = service.GetCongressGovData();
+            }
+            
+            return await Task.FromResult(legislation.Length); //TODO
         }
 
         private IWebDriver CreateRemoteWebDriver(Uri uri, DriverOptions driverOptions)

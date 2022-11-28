@@ -4,11 +4,18 @@ namespace InspireUs.Congress.Api.Models
 {
 	public class MemberModel
 	{
-		public string FirstName { get; set; }
+		public MemberModel()
+		{
+			ServiceHistory = new List<ServiceTimeModel>();
+		}
+
+		public string FirstName { get; set; } = string.Empty;
 		public string? MiddleName { get; set; }
-		public string LastName { get; set; }
-		public string Party { get; set; }
-		public string State { get; set; }
-		public string? District { get; set; }
+		public string LastName { get; set; } = string.Empty;
+		public string Party { get; set; } = string.Empty;
+        public string State { get; set; } = string.Empty;
+		public string MemberType { get; set; } = string.Empty;
+        public string? District { get; set; }
+		public IEnumerable<ServiceTimeModel> ServiceHistory { get; set; }
 	}
 }

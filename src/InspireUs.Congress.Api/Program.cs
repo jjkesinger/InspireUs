@@ -13,6 +13,7 @@ public class Program
 
         var connectionString = builder.Configuration
             .GetConnectionString("CongressConnection");
+        ArgumentException.ThrowIfNullOrEmpty(connectionString);
 
         builder.Services.AddInfrastructure(connectionString,
             builder.Environment.IsDevelopment());

@@ -24,11 +24,9 @@ namespace InspireUs.Congress.Infrastructure.Migrations
 
             modelBuilder.Entity("InspireUs.Congress.Domain.Model.Member", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("ContactUrl")
                         .HasColumnType("nvarchar(max)");
@@ -42,6 +40,9 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("MemberType")
+                        .HasColumnType("int");
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("nvarchar(max)");
@@ -67,8 +68,8 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                 {
                     b.OwnsOne("InspireUs.Congress.Domain.Model.Address", "Address", b1 =>
                         {
-                            b1.Property<int>("MemberId")
-                                .HasColumnType("int");
+                            b1.Property<string>("MemberId")
+                                .HasColumnType("nvarchar(10)");
 
                             b1.Property<string>("Address1")
                                 .HasMaxLength(100)
@@ -86,7 +87,6 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                                 .HasColumnName("AddressCity");
 
                             b1.Property<int?>("State")
-                                .HasPrecision(1)
                                 .HasColumnType("int")
                                 .HasColumnName("AddressState");
 
@@ -105,16 +105,14 @@ namespace InspireUs.Congress.Infrastructure.Migrations
 
                     b.OwnsOne("InspireUs.Congress.Domain.Model.District", "District", b1 =>
                         {
-                            b1.Property<int>("MemberId")
-                                .HasColumnType("int");
+                            b1.Property<string>("MemberId")
+                                .HasColumnType("nvarchar(10)");
 
                             b1.Property<int?>("DistrictNumber")
-                                .HasPrecision(1)
                                 .HasColumnType("int")
                                 .HasColumnName("DistrictRepresented");
 
                             b1.Property<int>("State")
-                                .HasPrecision(1)
                                 .HasColumnType("int")
                                 .HasColumnName("StateRepresented");
 
@@ -128,8 +126,8 @@ namespace InspireUs.Congress.Infrastructure.Migrations
 
                     b.OwnsMany("InspireUs.Congress.Domain.Model.ServiceTime", "ServiceHistory", b1 =>
                         {
-                            b1.Property<int>("MemberId")
-                                .HasColumnType("int");
+                            b1.Property<string>("MemberId")
+                                .HasColumnType("nvarchar(10)");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()

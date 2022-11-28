@@ -14,18 +14,18 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                 name: "Member",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    DistrictRepresented = table.Column<int>(type: "int", precision: 1, nullable: true),
-                    StateRepresented = table.Column<int>(type: "int", precision: 1, nullable: false),
+                    DistrictRepresented = table.Column<int>(type: "int", nullable: true),
+                    StateRepresented = table.Column<int>(type: "int", nullable: false),
                     Party = table.Column<int>(type: "int", nullable: false),
+                    MemberType = table.Column<int>(type: "int", nullable: false),
                     Address1 = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Address2 = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     AddressCity = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    AddressState = table.Column<int>(type: "int", precision: 1, nullable: true),
+                    AddressState = table.Column<int>(type: "int", nullable: true),
                     AddressZipCode = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     PictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<int>(type: "int", nullable: true),
@@ -41,7 +41,7 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                 name: "ServiceTime",
                 columns: table => new
                 {
-                    MemberId = table.Column<int>(type: "int", nullable: false),
+                    MemberId = table.Column<string>(type: "nvarchar(10)", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MemberType = table.Column<int>(type: "int", nullable: false),

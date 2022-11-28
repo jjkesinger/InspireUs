@@ -19,6 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    <PackageReference Include="Selenium.Support" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,8 @@
     <None Remove="Models\" />
     <None Remove="System.Linq.Async" />
     <None Remove="DesignTime\" />
+    <None Remove="Services\" />
+    <None Remove="Selenium.Support" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InspireUs.Congress.Domain\InspireUs.Congress.Domain.csproj">
@@ -44,5 +47,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="DesignTime\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

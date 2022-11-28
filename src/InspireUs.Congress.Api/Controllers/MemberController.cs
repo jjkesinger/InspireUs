@@ -28,7 +28,14 @@ namespace InspireUs.Congress.Api.Controllers
                 MiddleName = member.MiddleName,
                 State = member.District.State.GetDescription(),
                 District = member.District.DistrictNumber?.ToString(),
-                Party = member.Party.GetDescription()
+                Party = member.Party.GetDescription(),
+                MemberType = member.MemberType.GetDescription(),
+                ServiceHistory = member.ServiceHistory.Select(h => new ServiceTimeModel
+                {
+                    StartYear = h.StartYear,
+                    EndYear = h.EndYear,
+                    MemberType = h.MemberType.GetDescription()
+                })
             });
 		}
 
@@ -43,7 +50,14 @@ namespace InspireUs.Congress.Api.Controllers
                 MiddleName = member.MiddleName,
                 State = member.District.State.GetDescription(),
                 District = member.District.DistrictNumber?.ToString(),
-                Party = member.Party.GetDescription()
+                Party = member.Party.GetDescription(),
+                MemberType = member.MemberType.GetDescription(),
+                ServiceHistory = member.ServiceHistory.Select(h => new ServiceTimeModel
+                {
+                    StartYear = h.StartYear,
+                    EndYear = h.EndYear,
+                    MemberType = h.MemberType.GetDescription()
+                })
             });
         }
 
@@ -58,7 +72,14 @@ namespace InspireUs.Congress.Api.Controllers
                 MiddleName = member.MiddleName,
                 State = member.District.State.GetDescription(),
                 District = member.District.DistrictNumber?.ToString(),
-                Party = member.Party.GetDescription()
+                Party = member.Party.GetDescription(),
+                MemberType = member.MemberType.GetDescription(),
+                ServiceHistory = member.ServiceHistory.Select(h => new ServiceTimeModel
+                {
+                    StartYear = h.StartYear,
+                    EndYear = h.EndYear,
+                    MemberType = h.MemberType.GetDescription()
+                })
             }).ToList();
         }
     }
