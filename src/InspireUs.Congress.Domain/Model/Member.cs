@@ -12,7 +12,8 @@ namespace InspireUs.Congress.Domain.Model
         public Member(string id, string firstName, string? middleName, string lastName,
 			District district, Party party, ICollection<ServiceTime> serviceHistory,
 			string? pictureUrl = null, Address? address = null,
-			int? phone = null, string? website = null, string? contactUrl = null)
+			int? phone = null, string? website = null, string? contactUrl = null,
+			ICollection<Legislation>? legislations = null)
 		{
             ArgumentException.ThrowIfNullOrEmpty(id, nameof(id));
             ArgumentException.ThrowIfNullOrEmpty(firstName, nameof(firstName));
@@ -36,6 +37,12 @@ namespace InspireUs.Congress.Domain.Model
 				address = new Address();
 			}
 
+			if (legislations == null)
+			{
+				legislations = new List<Legislation>();
+			}
+
+			Legislations = legislations;
 			Address = address;
 			Phone = phone;
 			WebsiteUrl = website;
@@ -56,6 +63,8 @@ namespace InspireUs.Congress.Domain.Model
 		public int? Phone { get; private set; }
 		public string? WebsiteUrl { get; private set; }
 		public string? ContactUrl { get; private set; }
-	}
+
+        public virtual ICollection<Legislation> Legislations { get; private set; }
+    }
 }
 

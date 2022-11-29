@@ -4,12 +4,10 @@ namespace InspireUs.Congress.Domain.Model
 	public class Legislation
 	{
 		public Legislation(string billNumber, string congressNth,
-			string title, string sponserMemberId)
+			string? title, string? sponserMemberId)
 		{
 			ArgumentException.ThrowIfNullOrEmpty(billNumber, nameof(billNumber));
             ArgumentException.ThrowIfNullOrEmpty(congressNth, nameof(congressNth));
-            ArgumentException.ThrowIfNullOrEmpty(title, nameof(title));
-            ArgumentException.ThrowIfNullOrEmpty(sponserMemberId, nameof(sponserMemberId));
 
             BillNumber = billNumber;
             CongressNth = congressNth;
@@ -18,10 +16,13 @@ namespace InspireUs.Congress.Domain.Model
 		}
 
 		public string BillNumber { get; }
+        public string? Title { get; private set; }
+
+        public virtual Congress? Congress { get; private set; }
         public string CongressNth { get; }
 
-        public string Title { get; private set; }
-		public string SponserMemberId { get; private set; }
+        public virtual Member? SponserMember { get; private set; }
+		public string? SponserMemberId { get; private set; }
 	}
 }
 

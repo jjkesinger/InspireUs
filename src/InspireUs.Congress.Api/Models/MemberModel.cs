@@ -7,6 +7,7 @@ namespace InspireUs.Congress.Api.Models
 		public MemberModel()
 		{
 			ServiceHistory = new List<ServiceTimeModel>();
+			Legislation = new List<LegislationModel>();
 		}
 
 		public string FirstName { get; set; } = string.Empty;
@@ -17,5 +18,6 @@ namespace InspireUs.Congress.Api.Models
 		public string MemberType { get; set; } = string.Empty;
         public string? District { get; set; }
 		public IEnumerable<ServiceTimeModel> ServiceHistory { get; set; }
+		public IEnumerable<LegislationModel> Legislation { get; set; }
 	}
 }

@@ -28,7 +28,8 @@ namespace InspireUs.Congress.Domain.Services
 					new Member(member.Id, member.FirstName,
 					member.MiddleName, member.LastName, member.District,
 					member.Party, member.ServiceHistory, member.PictureUrl,
-					member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
+					member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
+					member.Legislations))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsyncEnumerable)}")
                 .AsAsyncEnumerable();
 		}
@@ -41,7 +42,8 @@ namespace InspireUs.Congress.Domain.Services
                     new Member(member.Id, member.FirstName,
                     member.MiddleName, member.LastName, member.District,
                     member.Party, member.ServiceHistory, member.PictureUrl,
-                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
+                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
+                    member.Legislations))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsync)}")
                 .ToListAsync();
 		}
@@ -54,7 +56,8 @@ namespace InspireUs.Congress.Domain.Services
                     new Member(member.Id, member.FirstName,
                     member.MiddleName, member.LastName, member.District,
                     member.Party, member.ServiceHistory, member.PictureUrl,
-                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl))
+                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
+                    member.Legislations))
                 .TagWith($"{nameof(MemberService)}|{nameof(GetMembersSync)}")
                 .ToList();
         }

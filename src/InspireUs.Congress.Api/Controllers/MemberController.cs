@@ -35,6 +35,11 @@ namespace InspireUs.Congress.Api.Controllers
                     StartYear = h.StartYear,
                     EndYear = h.EndYear,
                     MemberType = h.MemberType.GetDescription()
+                }),
+                Legislation = member.Legislations.Select(l => new LegislationModel
+                {
+                    Name = l.BillNumber,
+                    Title = l.Title
                 })
             });
 		}
@@ -57,6 +62,11 @@ namespace InspireUs.Congress.Api.Controllers
                     StartYear = h.StartYear,
                     EndYear = h.EndYear,
                     MemberType = h.MemberType.GetDescription()
+                }),
+                Legislation = member.Legislations.Select(l => new LegislationModel
+                {
+                    Name = l.BillNumber,
+                    Title = l.Title
                 })
             });
         }
@@ -79,6 +89,11 @@ namespace InspireUs.Congress.Api.Controllers
                     StartYear = h.StartYear,
                     EndYear = h.EndYear,
                     MemberType = h.MemberType.GetDescription()
+                }),
+                Legislation = member.Legislations.Select(l => new LegislationModel
+                {
+                    Name = l.BillNumber,
+                    Title = l.Title
                 })
             }).ToList();
         }

@@ -8,7 +8,7 @@ namespace InspireUs.Congress.Api.Services
 {
     public abstract partial class WebScrapingService<T> : IDisposable where T : class
     {
-        private int Page;
+        private int Page = 0;
         private int PageTotal;
         private string? Url;
         private bool IsBotDetected;
@@ -20,7 +20,7 @@ namespace InspireUs.Congress.Api.Services
         protected IWebDriver Driver { get; private set; }
         protected readonly List<T> Data = new List<T>();
 
-        protected virtual int PageSize { get; } = 250;
+        public virtual int PageSize { get; } = 250;
         protected abstract string Query { get; }
 
         protected WebScrapingService(Uri seleniumUri,
@@ -39,7 +39,7 @@ namespace InspireUs.Congress.Api.Services
         }
 
         
-        public T[] GetCongressGovData()
+        public T[] GetCongressGovData(int? startPage = null, int? pageTotal = null)
         {
             try
             {
@@ -48,12 +48,14 @@ namespace InspireUs.Congress.Api.Services
                     if (string.IsNullOrEmpty(Query))
                         ArgumentException.ThrowIfNullOrEmpty(Query, nameof(Query));
 
-                    Url = BuildUrl(Query, PageSize);
+                    Page = startPage ?? Page;
+                    Url = BuildUrl(Query, PageSize, Page);
                 }
 
                 Driver.Navigate().GoToUrl(Url);
 
-                PageTotal = GetPageTotal();
+                var ttlPages = GetPageTotal();
+                PageTotal = pageTotal.HasValue && pageTotal.Value < ttlPages ? pageTotal.Value : ttlPages;
                 while (Page < PageTotal && !IsBotDetected)
                 {
                     PopulateData();
@@ -66,18 +68,20 @@ namespace InspireUs.Congress.Api.Services
                     GetCongressGovData();
                 }
 
-                return Data.ToArray();
+                var data = Data.ToArray();
+                Data.Clear();
+                return data;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Driver?.Quit();
-                throw;
+                throw new AggregateException($"Exception Page {Page}", e);
             }
         }
 
         protected abstract void PopulateData();
 
-        private int GetPageTotal()
+        protected virtual int GetPageTotal()
         {
             var pageTotalElement = Driver.FindElements(
                 By.CssSelector("#searchTune > div.basic-search-tune-number > div.pagination > span.results-number"));
@@ -89,6 +93,11 @@ namespace InspireUs.Congress.Api.Services
             }
 
             return 0;
+        }
+
+        private string BuildUrl(string query, int pageSize, int startPage)
+        {
+            return $"https://www.congress.gov/search?q={query}&pageSize={pageSize}&page={startPage}";
         }
 
         private void ClickToNextPage()
@@ -131,11 +140,6 @@ namespace InspireUs.Congress.Api.Services
             Driver.Quit();
             Driver = _createWebDriver(_webDriverUri, _webDriverOptions);
             IsBotDetected = false;
-        }
-
-        private static string BuildUrl(string query, int pageSize)
-        {
-            return $"https://www.congress.gov/search?pageSize={pageSize}&q={query}";
         }
 
         #region Dispose

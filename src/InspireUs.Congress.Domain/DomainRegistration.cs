@@ -11,6 +11,7 @@ namespace InspireUs.Congress.Domain
         this IServiceCollection services)
         {
             services.AddScoped<MemberService>();
+            services.AddScoped<LegislationService>();
 
             return services;
         }

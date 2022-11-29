@@ -15,9 +15,11 @@ namespace InspireUs.Congress.Api.Controllers
     public class SyncController : ControllerBase
     {
         private readonly MemberService _memberService;
+        private readonly LegislationService _legislationService;
         private readonly Uri _seleniumUrl;
 
-        public SyncController(MemberService memberService,
+        public SyncController([NotNull] MemberService memberService,
+            [NotNull] LegislationService legislationService,
             [NotNull] IConfiguration configuration)
 		{
             var url = configuration.GetConnectionString("SeleniumUrl");
@@ -25,6 +27,7 @@ namespace InspireUs.Congress.Api.Controllers
 
             _seleniumUrl = new Uri(url);
             _memberService = memberService;
+            _legislationService = legislationService;
 		}
 
         [HttpGet(Name = "SyncMembers")]
@@ -42,19 +45,17 @@ namespace InspireUs.Congress.Api.Controllers
             return await _memberService.AddMembers(members);
         }
 
-        [HttpGet(Name = "SyncLegislation")]
-        public async Task<int> SyncLegislation()
+        [HttpGet(Name = "SyncLegislations")]
+        public async Task<int> SyncLegislations()
         {
-            Legislation[] legislation;
-
             var options = new FirefoxOptions();
-            using (var service = new LegislationWebScrapingService(_seleniumUrl,
-                options, CreateRemoteWebDriver))
+            using (var service = new BatchWebScrapingService(new LegislationWebScrapingService(_seleniumUrl,
+                options, CreateRemoteWebDriver)))
             {
-                legislation = service.GetCongressGovData();
+                await service.GetCongressGovDataByBatch(_legislationService.AddLegislations, 500);
             }
-            
-            return await Task.FromResult(legislation.Length); //TODO
+
+            return 0;
         }
 
         private IWebDriver CreateRemoteWebDriver(Uri uri, DriverOptions driverOptions)

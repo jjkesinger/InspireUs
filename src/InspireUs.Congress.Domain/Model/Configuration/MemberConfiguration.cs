@@ -43,6 +43,10 @@ namespace InspireUs.Congress.Domain.Model.Configuration
                 b.Property(p => p.StartYear).IsRequired();
                 b.Property(p => p.MemberType).IsRequired();
             });
+
+            builder.HasMany(f => f.Legislations)
+                .WithOne(g => g.SponserMember)
+                .HasForeignKey(k => k.SponserMemberId);
         }
     }
 }

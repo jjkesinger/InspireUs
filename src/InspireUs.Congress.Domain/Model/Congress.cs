@@ -3,12 +3,22 @@ namespace InspireUs.Congress.Domain.Model
 {
 	public class Congress
 	{
-		public Congress(string nth)
+		//for efcore only
+		private Congress(): this(string.Empty) { }
+
+		public Congress(string nth): this(nth, new List<Legislation>())
 		{
-            Nth = nth;
+            
 		}
 
+		public Congress(string nth, ICollection<Legislation> legislations)
+		{
+            Nth = nth;
+			Legislations = legislations;
+        }
+
 		public string Nth { get; }
-	}
+        public ICollection<Legislation> Legislations { get; private set; }
+    }
 }
 
