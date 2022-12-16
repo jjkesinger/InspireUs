@@ -49,10 +49,10 @@ Write-Output "Creating $database on $server..."
 az sql db create --resource-group $resourceGroupName --server $server --name $database --service-objective Basic --tier Basic
 
 #create service bus queue
-Write-Output "Creating service bus..."
-az servicebus namespace create --resource-group $resourceGroupName --name $serviceBusNS --location "$location"
-Write-Output "Creating SyncQueue..."
-az servicebus queue create --resource-group $resourceGroupName --namespace-name $serviceBusNS --name WebScrapingQueue
+#Write-Output "Creating service bus..."
+#az servicebus namespace create --resource-group $resourceGroupName --name $serviceBusNS --location "$location"
+#Write-Output "Creating SyncQueue..."
+#az servicebus queue create --resource-group $resourceGroupName --namespace-name $serviceBusNS --name WebScrapingQueue
 
 # how to get sb connectionstring
 # az servicebus namespace authorization-rule keys list --resource-group $resourceGroupName --namespace-name $serviceBusNS --name RootManageSharedAccessKey --query primaryConnectionString --output tsv

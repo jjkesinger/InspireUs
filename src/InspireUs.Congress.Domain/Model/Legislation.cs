@@ -6,7 +6,7 @@ namespace InspireUs.Congress.Domain.Model
 	public class Legislation
 	{
 		//for EF only
-		private Legislation() { }
+		private Legislation(): this(string.Empty, string.Empty, null, null, null, null) { }
 
 		public Legislation(string billNumber, string congressNth,
 			string? title, string? sponserMemberId, DateTime? introDate, string? id)

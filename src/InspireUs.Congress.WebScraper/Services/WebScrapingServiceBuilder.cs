@@ -31,7 +31,7 @@ namespace InspireUs.Congress.WebScraper
             return this;
         }
 
-        public async Task Run()
+        public async Task Run(CancellationToken stoppingToken)
         {
             if (string.IsNullOrWhiteSpace(_query))
             {
@@ -47,7 +47,7 @@ namespace InspireUs.Congress.WebScraper
                 {
                     try
                     {
-                        await service.GetCongressGovDataByBatch(_legislationService.AddLegislations);
+                        await service.GetCongressGovDataByBatch(_legislationService.AddLegislations, stoppingToken);
                     }
                     catch (Exception e)
                     {
@@ -61,7 +61,7 @@ namespace InspireUs.Congress.WebScraper
                 {
                     try
                     {
-                        await service.GetCongressGovDataByBatch(_memberService.AddMembers);
+                        await service.GetCongressGovDataByBatch(_memberService.AddMembers, stoppingToken);
                     }
                     catch (Exception e)
                     {

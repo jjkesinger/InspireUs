@@ -17,11 +17,11 @@ namespace InspireUs.Congress.Domain.Services
             var existingIds = _context.Set<Legislation>()
                 .Where(f => legislations.Select(s => s.Id).Contains(f.Id))
                 .Select(g => g.Id)
-                .ToArray();
+                .ToList();
 
             foreach (var member in legislations.Where(f => !existingIds.Contains(f.Id)))
             {
-                _context.Add(member);
+                await _context.AddAsync(member);
             }
 
             return await _context.SaveChangesAsync();

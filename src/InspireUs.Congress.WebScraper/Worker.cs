@@ -19,26 +19,23 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (!stoppingToken.IsCancellationRequested)
+        var query = "%7B%22source%22%3A%22members%22%7D";
+        await ProcessQueryMessage(query, stoppingToken);
+
+        for (var i = 117; i > 3; i = i - 2)
         {
-            var query = "%7B%22source%22%3A%22members%22%7D";
-            await ProcessQueryMessage(query);
+            query = $"{{\"source\":\"legislation\",\"congress\":{i},\"type\":\"bills\"}}";
+            var query2 = $"{{\"source\":\"legislation\",\"congress\":{i - 1},\"type\":\"bills\"}}";
 
-            for (var i = 117; i > 3; i = i - 2)
-            {
-                query = $"{{\"source\":\"legislation\",\"congress\":{i},\"type\":\"bills\"}}";
-                var query2 = $"{{\"source\":\"legislation\",\"congress\":{i-1},\"type\":\"bills\"}}";
-
-                var task = Task.Run(() => ProcessQueryMessage(query));
-                var task2 = Task.Run(() => ProcessQueryMessage(query2));
-                await Task.WhenAll(task, task2);
-            }
-
-            await Task.Delay(1000 * 60 * 15, stoppingToken);
+            var task = Task.Run(() => ProcessQueryMessage(query, stoppingToken));
+            var task2 = Task.Run(() => ProcessQueryMessage(query2, stoppingToken));
+            await Task.WhenAll(task, task2);
         }
+
+        await Task.Delay(1000 * 60 * 15, stoppingToken);
     }
 
-    private async Task ProcessQueryMessage(string query)
+    private async Task ProcessQueryMessage(string query, CancellationToken stoppingToken)
     {
         try
         {
@@ -47,7 +44,7 @@ public class Worker : BackgroundService
             using (var scope = _scopeFactory.CreateScope())
             {
                 var runner = scope.ServiceProvider.GetRequiredService<WebScrapingServiceBuilder>();
-                await runner.WithQuery(query).Run();
+                await runner.WithQuery(query).Run(stoppingToken);
             }
         }
         catch (Exception e)

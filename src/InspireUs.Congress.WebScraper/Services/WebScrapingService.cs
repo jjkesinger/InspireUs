@@ -34,7 +34,7 @@ namespace InspireUs.Congress.WebScraper
             }
         }
 
-        public async Task GetCongressGovDataByBatch(Func<IEnumerable<T>, Task<int>> saveFunc, int batchSize = 500, int? startPage = null, int? endPage = null)
+        public async Task GetCongressGovDataByBatch(Func<IEnumerable<T>, Task<int>> saveFunc, CancellationToken stoppingToken, int batchSize = 500, int? startPage = null, int? endPage = null)
         {
             if (batchSize < PageSize)
             {
@@ -52,14 +52,14 @@ namespace InspireUs.Congress.WebScraper
                 start = start + (currentBatch * (batchSize / PageSize));
                 end = start + (batchSize / PageSize);
 
-                data = GetCongressGovData(start, end);
+                data = await GetCongressGovData(stoppingToken, start, end);
                 await saveFunc(data);
 
                 currentBatch++;
-            } while (data.Any());
+            } while (data.Any() && !stoppingToken.IsCancellationRequested);
         }
 
-        public IEnumerable<T> GetCongressGovData(int? startPage = null, int? pageTotal = null)
+        public async Task<IEnumerable<T>> GetCongressGovData(CancellationToken stoppingToken, int ? startPage = null, int? pageTotal = null)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace InspireUs.Congress.WebScraper
 
                 var ttlPages = GetPageTotal();
                 PageTotal = pageTotal.HasValue && pageTotal.Value < ttlPages ? pageTotal.Value : ttlPages;
-                while (Page < PageTotal && !IsBotDetected)
+                while (Page < PageTotal && !IsBotDetected && !stoppingToken.IsCancellationRequested)
                 {
                     PopulateData();
                     ClickToNextPage();
@@ -85,7 +85,7 @@ namespace InspireUs.Congress.WebScraper
                 if (IsBotDetected)
                 {
                     ResetWebDriver();
-                    GetCongressGovData();
+                    await GetCongressGovData(stoppingToken);
                 }
 
                 var data = Data.ToArray();
@@ -131,9 +131,10 @@ namespace InspireUs.Congress.WebScraper
             if (links.Any())
             {
                 Url = links[0].GetAttribute("href");
+
                 links[0].Click();
 
-                var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
                 wait.Until(d => {
                     var loaderElement = By.CssSelector("body > div.actionLoaderWrapper");
                     if (d.FindElements(loaderElement).Any())

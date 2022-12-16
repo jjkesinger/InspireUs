@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   inspireus.congress.api:
-    image: ${DOCKER_REGISTRY-}inspireuscongress
+    image: ${DOCKER_REGISTRY-}inspireusapi
     build:
       context: .
       dockerfile: InspireUs.Congress.Api/Dockerfile
@@ -12,6 +12,7 @@ services:
     restart: always
     networks:
       - hub_network
+
   inspireus.congress.webscraper:
     image: ${DOCKER_REGISTRY-}inspireuswebscraper
     build:
@@ -23,6 +24,7 @@ services:
     restart: always
     networks:
       - hub_network
+
   chrome:
     image: seleniarm/node-chromium:latest
     shm_size: 2gb

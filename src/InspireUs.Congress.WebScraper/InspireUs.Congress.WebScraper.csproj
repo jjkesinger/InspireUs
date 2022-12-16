@@ -15,13 +15,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Services\" />
-    <None Remove="Models\" />
     <None Remove="Selenium.Support" />
     <None Remove="Selenium.WebDriver" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InspireUs.Congress.Domain\InspireUs.Congress.Domain.csproj" />
