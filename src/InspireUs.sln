@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{4467EE49-FDFD-448E-A642-29930E7E3A7B}"
 	ProjectSection(SolutionItems) = preProject
 		Deployment\deploy.ps1 = Deployment\deploy.ps1
+		Deployment\azure-deploy-dev.yaml = Deployment\azure-deploy-dev.yaml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspireUs.Congress.WebScraper", "InspireUs.Congress.WebScraper\InspireUs.Congress.WebScraper.csproj", "{2C756FF3-7023-44DE-B128-3DB0A0D24B49}"
