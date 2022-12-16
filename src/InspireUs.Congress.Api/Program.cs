@@ -11,8 +11,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var connectionString = builder.Configuration
-            .GetConnectionString("CongressConnection");
+        var connectionString = builder.Configuration.GetConnectionString("CongressConnection");
         ArgumentException.ThrowIfNullOrEmpty(connectionString);
 
         builder.Services.AddInfrastructure(connectionString,
@@ -41,4 +40,3 @@ public class Program
         app.Run();
     }
 }
-

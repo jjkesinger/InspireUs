@@ -8,7 +8,9 @@ namespace InspireUs.Congress.Domain.Model.Configuration
     {
         public void Configure(EntityTypeBuilder<Legislation> builder)
         {
-            builder.HasKey(f => f.BillNumber);
+            builder.HasKey(f => f.Id);
+
+            builder.Property(f => f.BillNumber).HasMaxLength(30);
         }
     }
 }

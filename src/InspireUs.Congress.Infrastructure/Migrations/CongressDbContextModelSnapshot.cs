@@ -22,498 +22,22 @@ namespace InspireUs.Congress.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("InspireUs.Congress.Domain.Model.Congress", b =>
-                {
-                    b.Property<string>("Nth")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Nth");
-
-                    b.ToTable("Congress");
-
-                    b.HasData(
-                        new
-                        {
-                            Nth = "1st"
-                        },
-                        new
-                        {
-                            Nth = "2nd"
-                        },
-                        new
-                        {
-                            Nth = "3rd"
-                        },
-                        new
-                        {
-                            Nth = "4th"
-                        },
-                        new
-                        {
-                            Nth = "5th"
-                        },
-                        new
-                        {
-                            Nth = "6th"
-                        },
-                        new
-                        {
-                            Nth = "7th"
-                        },
-                        new
-                        {
-                            Nth = "8th"
-                        },
-                        new
-                        {
-                            Nth = "9th"
-                        },
-                        new
-                        {
-                            Nth = "10th"
-                        },
-                        new
-                        {
-                            Nth = "11th"
-                        },
-                        new
-                        {
-                            Nth = "12th"
-                        },
-                        new
-                        {
-                            Nth = "13th"
-                        },
-                        new
-                        {
-                            Nth = "14th"
-                        },
-                        new
-                        {
-                            Nth = "15th"
-                        },
-                        new
-                        {
-                            Nth = "16th"
-                        },
-                        new
-                        {
-                            Nth = "17th"
-                        },
-                        new
-                        {
-                            Nth = "18th"
-                        },
-                        new
-                        {
-                            Nth = "19th"
-                        },
-                        new
-                        {
-                            Nth = "20th"
-                        },
-                        new
-                        {
-                            Nth = "21st"
-                        },
-                        new
-                        {
-                            Nth = "22nd"
-                        },
-                        new
-                        {
-                            Nth = "23rd"
-                        },
-                        new
-                        {
-                            Nth = "24th"
-                        },
-                        new
-                        {
-                            Nth = "25th"
-                        },
-                        new
-                        {
-                            Nth = "26th"
-                        },
-                        new
-                        {
-                            Nth = "27th"
-                        },
-                        new
-                        {
-                            Nth = "28th"
-                        },
-                        new
-                        {
-                            Nth = "29th"
-                        },
-                        new
-                        {
-                            Nth = "30th"
-                        },
-                        new
-                        {
-                            Nth = "31st"
-                        },
-                        new
-                        {
-                            Nth = "32nd"
-                        },
-                        new
-                        {
-                            Nth = "33rd"
-                        },
-                        new
-                        {
-                            Nth = "34th"
-                        },
-                        new
-                        {
-                            Nth = "35th"
-                        },
-                        new
-                        {
-                            Nth = "36th"
-                        },
-                        new
-                        {
-                            Nth = "37th"
-                        },
-                        new
-                        {
-                            Nth = "38th"
-                        },
-                        new
-                        {
-                            Nth = "39th"
-                        },
-                        new
-                        {
-                            Nth = "40th"
-                        },
-                        new
-                        {
-                            Nth = "41st"
-                        },
-                        new
-                        {
-                            Nth = "42nd"
-                        },
-                        new
-                        {
-                            Nth = "43rd"
-                        },
-                        new
-                        {
-                            Nth = "44th"
-                        },
-                        new
-                        {
-                            Nth = "45th"
-                        },
-                        new
-                        {
-                            Nth = "46th"
-                        },
-                        new
-                        {
-                            Nth = "47th"
-                        },
-                        new
-                        {
-                            Nth = "48th"
-                        },
-                        new
-                        {
-                            Nth = "49th"
-                        },
-                        new
-                        {
-                            Nth = "50th"
-                        },
-                        new
-                        {
-                            Nth = "51st"
-                        },
-                        new
-                        {
-                            Nth = "52nd"
-                        },
-                        new
-                        {
-                            Nth = "53rd"
-                        },
-                        new
-                        {
-                            Nth = "54th"
-                        },
-                        new
-                        {
-                            Nth = "55th"
-                        },
-                        new
-                        {
-                            Nth = "56th"
-                        },
-                        new
-                        {
-                            Nth = "57th"
-                        },
-                        new
-                        {
-                            Nth = "58th"
-                        },
-                        new
-                        {
-                            Nth = "59th"
-                        },
-                        new
-                        {
-                            Nth = "60th"
-                        },
-                        new
-                        {
-                            Nth = "61st"
-                        },
-                        new
-                        {
-                            Nth = "62nd"
-                        },
-                        new
-                        {
-                            Nth = "63rd"
-                        },
-                        new
-                        {
-                            Nth = "64th"
-                        },
-                        new
-                        {
-                            Nth = "65th"
-                        },
-                        new
-                        {
-                            Nth = "66th"
-                        },
-                        new
-                        {
-                            Nth = "67th"
-                        },
-                        new
-                        {
-                            Nth = "68th"
-                        },
-                        new
-                        {
-                            Nth = "69th"
-                        },
-                        new
-                        {
-                            Nth = "70th"
-                        },
-                        new
-                        {
-                            Nth = "71st"
-                        },
-                        new
-                        {
-                            Nth = "72nd"
-                        },
-                        new
-                        {
-                            Nth = "73rd"
-                        },
-                        new
-                        {
-                            Nth = "74th"
-                        },
-                        new
-                        {
-                            Nth = "75th"
-                        },
-                        new
-                        {
-                            Nth = "76th"
-                        },
-                        new
-                        {
-                            Nth = "77th"
-                        },
-                        new
-                        {
-                            Nth = "78th"
-                        },
-                        new
-                        {
-                            Nth = "79th"
-                        },
-                        new
-                        {
-                            Nth = "80th"
-                        },
-                        new
-                        {
-                            Nth = "81st"
-                        },
-                        new
-                        {
-                            Nth = "82nd"
-                        },
-                        new
-                        {
-                            Nth = "83rd"
-                        },
-                        new
-                        {
-                            Nth = "84th"
-                        },
-                        new
-                        {
-                            Nth = "85th"
-                        },
-                        new
-                        {
-                            Nth = "86th"
-                        },
-                        new
-                        {
-                            Nth = "87th"
-                        },
-                        new
-                        {
-                            Nth = "88th"
-                        },
-                        new
-                        {
-                            Nth = "89th"
-                        },
-                        new
-                        {
-                            Nth = "90th"
-                        },
-                        new
-                        {
-                            Nth = "91st"
-                        },
-                        new
-                        {
-                            Nth = "92nd"
-                        },
-                        new
-                        {
-                            Nth = "93rd"
-                        },
-                        new
-                        {
-                            Nth = "94th"
-                        },
-                        new
-                        {
-                            Nth = "95th"
-                        },
-                        new
-                        {
-                            Nth = "96th"
-                        },
-                        new
-                        {
-                            Nth = "97th"
-                        },
-                        new
-                        {
-                            Nth = "98th"
-                        },
-                        new
-                        {
-                            Nth = "99th"
-                        },
-                        new
-                        {
-                            Nth = "100th"
-                        },
-                        new
-                        {
-                            Nth = "101st"
-                        },
-                        new
-                        {
-                            Nth = "102nd"
-                        },
-                        new
-                        {
-                            Nth = "103rd"
-                        },
-                        new
-                        {
-                            Nth = "104th"
-                        },
-                        new
-                        {
-                            Nth = "105th"
-                        },
-                        new
-                        {
-                            Nth = "106th"
-                        },
-                        new
-                        {
-                            Nth = "107th"
-                        },
-                        new
-                        {
-                            Nth = "108th"
-                        },
-                        new
-                        {
-                            Nth = "109th"
-                        },
-                        new
-                        {
-                            Nth = "110th"
-                        },
-                        new
-                        {
-                            Nth = "111th"
-                        },
-                        new
-                        {
-                            Nth = "112th"
-                        },
-                        new
-                        {
-                            Nth = "113th"
-                        },
-                        new
-                        {
-                            Nth = "114th"
-                        },
-                        new
-                        {
-                            Nth = "115th"
-                        },
-                        new
-                        {
-                            Nth = "116th"
-                        },
-                        new
-                        {
-                            Nth = "117th"
-                        },
-                        new
-                        {
-                            Nth = "118th"
-                        });
-                });
-
             modelBuilder.Entity("InspireUs.Congress.Domain.Model.Legislation", b =>
                 {
-                    b.Property<string>("BillNumber")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BillNumber")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("CongressNth")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime?>("IntroducedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SponserMemberId")
                         .HasColumnType("nvarchar(10)");
@@ -521,7 +45,7 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BillNumber");
+                    b.HasKey("Id");
 
                     b.HasIndex("CongressNth");
 
@@ -572,9 +96,738 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                     b.ToTable("Member");
                 });
 
+            modelBuilder.Entity("InspireUs.Congress.Domain.Model.UsCongress", b =>
+                {
+                    b.Property<string>("Nth")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int?>("EndDate")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StartDate")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.HasKey("Nth");
+
+                    b.ToTable("UsCongress");
+
+                    b.HasData(
+                        new
+                        {
+                            Nth = "1st",
+                            EndDate = 1790,
+                            StartDate = 1789
+                        },
+                        new
+                        {
+                            Nth = "2nd",
+                            EndDate = 1792,
+                            StartDate = 1791
+                        },
+                        new
+                        {
+                            Nth = "3rd",
+                            EndDate = 1794,
+                            StartDate = 1793
+                        },
+                        new
+                        {
+                            Nth = "4th",
+                            EndDate = 1796,
+                            StartDate = 1795
+                        },
+                        new
+                        {
+                            Nth = "5th",
+                            EndDate = 1798,
+                            StartDate = 1797
+                        },
+                        new
+                        {
+                            Nth = "6th",
+                            EndDate = 1800,
+                            StartDate = 1799
+                        },
+                        new
+                        {
+                            Nth = "7th",
+                            EndDate = 1802,
+                            StartDate = 1801
+                        },
+                        new
+                        {
+                            Nth = "8th",
+                            EndDate = 1804,
+                            StartDate = 1803
+                        },
+                        new
+                        {
+                            Nth = "9th",
+                            EndDate = 1806,
+                            StartDate = 1805
+                        },
+                        new
+                        {
+                            Nth = "10th",
+                            EndDate = 1808,
+                            StartDate = 1807
+                        },
+                        new
+                        {
+                            Nth = "11th",
+                            EndDate = 1810,
+                            StartDate = 1809
+                        },
+                        new
+                        {
+                            Nth = "12th",
+                            EndDate = 1812,
+                            StartDate = 1811
+                        },
+                        new
+                        {
+                            Nth = "13th",
+                            EndDate = 1814,
+                            StartDate = 1813
+                        },
+                        new
+                        {
+                            Nth = "14th",
+                            EndDate = 1816,
+                            StartDate = 1815
+                        },
+                        new
+                        {
+                            Nth = "15th",
+                            EndDate = 1818,
+                            StartDate = 1817
+                        },
+                        new
+                        {
+                            Nth = "16th",
+                            EndDate = 1820,
+                            StartDate = 1819
+                        },
+                        new
+                        {
+                            Nth = "17th",
+                            EndDate = 1822,
+                            StartDate = 1821
+                        },
+                        new
+                        {
+                            Nth = "18th",
+                            EndDate = 1824,
+                            StartDate = 1823
+                        },
+                        new
+                        {
+                            Nth = "19th",
+                            EndDate = 1826,
+                            StartDate = 1825
+                        },
+                        new
+                        {
+                            Nth = "20th",
+                            EndDate = 1828,
+                            StartDate = 1827
+                        },
+                        new
+                        {
+                            Nth = "21st",
+                            EndDate = 1830,
+                            StartDate = 1829
+                        },
+                        new
+                        {
+                            Nth = "22nd",
+                            EndDate = 1832,
+                            StartDate = 1831
+                        },
+                        new
+                        {
+                            Nth = "23rd",
+                            EndDate = 1834,
+                            StartDate = 1833
+                        },
+                        new
+                        {
+                            Nth = "24th",
+                            EndDate = 1836,
+                            StartDate = 1835
+                        },
+                        new
+                        {
+                            Nth = "25th",
+                            EndDate = 1838,
+                            StartDate = 1837
+                        },
+                        new
+                        {
+                            Nth = "26th",
+                            EndDate = 1840,
+                            StartDate = 1839
+                        },
+                        new
+                        {
+                            Nth = "27th",
+                            EndDate = 1842,
+                            StartDate = 1841
+                        },
+                        new
+                        {
+                            Nth = "28th",
+                            EndDate = 1844,
+                            StartDate = 1843
+                        },
+                        new
+                        {
+                            Nth = "29th",
+                            EndDate = 1846,
+                            StartDate = 1845
+                        },
+                        new
+                        {
+                            Nth = "30th",
+                            EndDate = 1848,
+                            StartDate = 1847
+                        },
+                        new
+                        {
+                            Nth = "31st",
+                            EndDate = 1850,
+                            StartDate = 1849
+                        },
+                        new
+                        {
+                            Nth = "32nd",
+                            EndDate = 1852,
+                            StartDate = 1851
+                        },
+                        new
+                        {
+                            Nth = "33rd",
+                            EndDate = 1854,
+                            StartDate = 1853
+                        },
+                        new
+                        {
+                            Nth = "34th",
+                            EndDate = 1856,
+                            StartDate = 1855
+                        },
+                        new
+                        {
+                            Nth = "35th",
+                            EndDate = 1858,
+                            StartDate = 1857
+                        },
+                        new
+                        {
+                            Nth = "36th",
+                            EndDate = 1860,
+                            StartDate = 1859
+                        },
+                        new
+                        {
+                            Nth = "37th",
+                            EndDate = 1862,
+                            StartDate = 1861
+                        },
+                        new
+                        {
+                            Nth = "38th",
+                            EndDate = 1864,
+                            StartDate = 1863
+                        },
+                        new
+                        {
+                            Nth = "39th",
+                            EndDate = 1866,
+                            StartDate = 1865
+                        },
+                        new
+                        {
+                            Nth = "40th",
+                            EndDate = 1868,
+                            StartDate = 1867
+                        },
+                        new
+                        {
+                            Nth = "41st",
+                            EndDate = 1870,
+                            StartDate = 1869
+                        },
+                        new
+                        {
+                            Nth = "42nd",
+                            EndDate = 1872,
+                            StartDate = 1871
+                        },
+                        new
+                        {
+                            Nth = "43rd",
+                            EndDate = 1874,
+                            StartDate = 1873
+                        },
+                        new
+                        {
+                            Nth = "44th",
+                            EndDate = 1876,
+                            StartDate = 1875
+                        },
+                        new
+                        {
+                            Nth = "45th",
+                            EndDate = 1878,
+                            StartDate = 1877
+                        },
+                        new
+                        {
+                            Nth = "46th",
+                            EndDate = 1880,
+                            StartDate = 1879
+                        },
+                        new
+                        {
+                            Nth = "47th",
+                            EndDate = 1882,
+                            StartDate = 1881
+                        },
+                        new
+                        {
+                            Nth = "48th",
+                            EndDate = 1884,
+                            StartDate = 1883
+                        },
+                        new
+                        {
+                            Nth = "49th",
+                            EndDate = 1886,
+                            StartDate = 1885
+                        },
+                        new
+                        {
+                            Nth = "50th",
+                            EndDate = 1888,
+                            StartDate = 1887
+                        },
+                        new
+                        {
+                            Nth = "51st",
+                            EndDate = 1890,
+                            StartDate = 1889
+                        },
+                        new
+                        {
+                            Nth = "52nd",
+                            EndDate = 1892,
+                            StartDate = 1891
+                        },
+                        new
+                        {
+                            Nth = "53rd",
+                            EndDate = 1894,
+                            StartDate = 1893
+                        },
+                        new
+                        {
+                            Nth = "54th",
+                            EndDate = 1896,
+                            StartDate = 1895
+                        },
+                        new
+                        {
+                            Nth = "55th",
+                            EndDate = 1898,
+                            StartDate = 1897
+                        },
+                        new
+                        {
+                            Nth = "56th",
+                            EndDate = 1900,
+                            StartDate = 1899
+                        },
+                        new
+                        {
+                            Nth = "57th",
+                            EndDate = 1902,
+                            StartDate = 1901
+                        },
+                        new
+                        {
+                            Nth = "58th",
+                            EndDate = 1904,
+                            StartDate = 1903
+                        },
+                        new
+                        {
+                            Nth = "59th",
+                            EndDate = 1906,
+                            StartDate = 1905
+                        },
+                        new
+                        {
+                            Nth = "60th",
+                            EndDate = 1908,
+                            StartDate = 1907
+                        },
+                        new
+                        {
+                            Nth = "61st",
+                            EndDate = 1910,
+                            StartDate = 1909
+                        },
+                        new
+                        {
+                            Nth = "62nd",
+                            EndDate = 1912,
+                            StartDate = 1911
+                        },
+                        new
+                        {
+                            Nth = "63rd",
+                            EndDate = 1914,
+                            StartDate = 1913
+                        },
+                        new
+                        {
+                            Nth = "64th",
+                            EndDate = 1916,
+                            StartDate = 1915
+                        },
+                        new
+                        {
+                            Nth = "65th",
+                            EndDate = 1918,
+                            StartDate = 1917
+                        },
+                        new
+                        {
+                            Nth = "66th",
+                            EndDate = 1920,
+                            StartDate = 1919
+                        },
+                        new
+                        {
+                            Nth = "67th",
+                            EndDate = 1922,
+                            StartDate = 1921
+                        },
+                        new
+                        {
+                            Nth = "68th",
+                            EndDate = 1924,
+                            StartDate = 1923
+                        },
+                        new
+                        {
+                            Nth = "69th",
+                            EndDate = 1926,
+                            StartDate = 1925
+                        },
+                        new
+                        {
+                            Nth = "70th",
+                            EndDate = 1928,
+                            StartDate = 1927
+                        },
+                        new
+                        {
+                            Nth = "71st",
+                            EndDate = 1930,
+                            StartDate = 1929
+                        },
+                        new
+                        {
+                            Nth = "72nd",
+                            EndDate = 1932,
+                            StartDate = 1931
+                        },
+                        new
+                        {
+                            Nth = "73rd",
+                            EndDate = 1934,
+                            StartDate = 1933
+                        },
+                        new
+                        {
+                            Nth = "74th",
+                            EndDate = 1936,
+                            StartDate = 1935
+                        },
+                        new
+                        {
+                            Nth = "75th",
+                            EndDate = 1938,
+                            StartDate = 1937
+                        },
+                        new
+                        {
+                            Nth = "76th",
+                            EndDate = 1940,
+                            StartDate = 1939
+                        },
+                        new
+                        {
+                            Nth = "77th",
+                            EndDate = 1942,
+                            StartDate = 1941
+                        },
+                        new
+                        {
+                            Nth = "78th",
+                            EndDate = 1944,
+                            StartDate = 1943
+                        },
+                        new
+                        {
+                            Nth = "79th",
+                            EndDate = 1946,
+                            StartDate = 1945
+                        },
+                        new
+                        {
+                            Nth = "80th",
+                            EndDate = 1948,
+                            StartDate = 1947
+                        },
+                        new
+                        {
+                            Nth = "81st",
+                            EndDate = 1950,
+                            StartDate = 1949
+                        },
+                        new
+                        {
+                            Nth = "82nd",
+                            EndDate = 1952,
+                            StartDate = 1951
+                        },
+                        new
+                        {
+                            Nth = "83rd",
+                            EndDate = 1954,
+                            StartDate = 1953
+                        },
+                        new
+                        {
+                            Nth = "84th",
+                            EndDate = 1956,
+                            StartDate = 1955
+                        },
+                        new
+                        {
+                            Nth = "85th",
+                            EndDate = 1958,
+                            StartDate = 1957
+                        },
+                        new
+                        {
+                            Nth = "86th",
+                            EndDate = 1960,
+                            StartDate = 1959
+                        },
+                        new
+                        {
+                            Nth = "87th",
+                            EndDate = 1962,
+                            StartDate = 1961
+                        },
+                        new
+                        {
+                            Nth = "88th",
+                            EndDate = 1964,
+                            StartDate = 1963
+                        },
+                        new
+                        {
+                            Nth = "89th",
+                            EndDate = 1966,
+                            StartDate = 1965
+                        },
+                        new
+                        {
+                            Nth = "90th",
+                            EndDate = 1968,
+                            StartDate = 1967
+                        },
+                        new
+                        {
+                            Nth = "91st",
+                            EndDate = 1970,
+                            StartDate = 1969
+                        },
+                        new
+                        {
+                            Nth = "92nd",
+                            EndDate = 1972,
+                            StartDate = 1971
+                        },
+                        new
+                        {
+                            Nth = "93rd",
+                            EndDate = 1974,
+                            StartDate = 1973
+                        },
+                        new
+                        {
+                            Nth = "94th",
+                            EndDate = 1976,
+                            StartDate = 1975
+                        },
+                        new
+                        {
+                            Nth = "95th",
+                            EndDate = 1978,
+                            StartDate = 1977
+                        },
+                        new
+                        {
+                            Nth = "96th",
+                            EndDate = 1980,
+                            StartDate = 1979
+                        },
+                        new
+                        {
+                            Nth = "97th",
+                            EndDate = 1982,
+                            StartDate = 1981
+                        },
+                        new
+                        {
+                            Nth = "98th",
+                            EndDate = 1984,
+                            StartDate = 1983
+                        },
+                        new
+                        {
+                            Nth = "99th",
+                            EndDate = 1986,
+                            StartDate = 1985
+                        },
+                        new
+                        {
+                            Nth = "100th",
+                            EndDate = 1988,
+                            StartDate = 1987
+                        },
+                        new
+                        {
+                            Nth = "101st",
+                            EndDate = 1990,
+                            StartDate = 1989
+                        },
+                        new
+                        {
+                            Nth = "102nd",
+                            EndDate = 1992,
+                            StartDate = 1991
+                        },
+                        new
+                        {
+                            Nth = "103rd",
+                            EndDate = 1994,
+                            StartDate = 1993
+                        },
+                        new
+                        {
+                            Nth = "104th",
+                            EndDate = 1996,
+                            StartDate = 1995
+                        },
+                        new
+                        {
+                            Nth = "105th",
+                            EndDate = 1998,
+                            StartDate = 1997
+                        },
+                        new
+                        {
+                            Nth = "106th",
+                            EndDate = 2000,
+                            StartDate = 1999
+                        },
+                        new
+                        {
+                            Nth = "107th",
+                            EndDate = 2002,
+                            StartDate = 2001
+                        },
+                        new
+                        {
+                            Nth = "108th",
+                            EndDate = 2004,
+                            StartDate = 2003
+                        },
+                        new
+                        {
+                            Nth = "109th",
+                            EndDate = 2006,
+                            StartDate = 2005
+                        },
+                        new
+                        {
+                            Nth = "110th",
+                            EndDate = 2008,
+                            StartDate = 2007
+                        },
+                        new
+                        {
+                            Nth = "111th",
+                            EndDate = 2010,
+                            StartDate = 2009
+                        },
+                        new
+                        {
+                            Nth = "112th",
+                            EndDate = 2012,
+                            StartDate = 2011
+                        },
+                        new
+                        {
+                            Nth = "113th",
+                            EndDate = 2014,
+                            StartDate = 2013
+                        },
+                        new
+                        {
+                            Nth = "114th",
+                            EndDate = 2016,
+                            StartDate = 2015
+                        },
+                        new
+                        {
+                            Nth = "115th",
+                            EndDate = 2018,
+                            StartDate = 2017
+                        },
+                        new
+                        {
+                            Nth = "116th",
+                            EndDate = 2020,
+                            StartDate = 2019
+                        },
+                        new
+                        {
+                            Nth = "117th",
+                            EndDate = 2022,
+                            StartDate = 2021
+                        },
+                        new
+                        {
+                            Nth = "118th",
+                            EndDate = 2024,
+                            StartDate = 2023
+                        });
+                });
+
             modelBuilder.Entity("InspireUs.Congress.Domain.Model.Legislation", b =>
                 {
-                    b.HasOne("InspireUs.Congress.Domain.Model.Congress", "Congress")
+                    b.HasOne("InspireUs.Congress.Domain.Model.UsCongress", "Congress")
                         .WithMany("Legislations")
                         .HasForeignKey("CongressNth")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -686,12 +939,12 @@ namespace InspireUs.Congress.Infrastructure.Migrations
                     b.Navigation("ServiceHistory");
                 });
 
-            modelBuilder.Entity("InspireUs.Congress.Domain.Model.Congress", b =>
+            modelBuilder.Entity("InspireUs.Congress.Domain.Model.Member", b =>
                 {
                     b.Navigation("Legislations");
                 });
 
-            modelBuilder.Entity("InspireUs.Congress.Domain.Model.Member", b =>
+            modelBuilder.Entity("InspireUs.Congress.Domain.Model.UsCongress", b =>
                 {
                     b.Navigation("Legislations");
                 });

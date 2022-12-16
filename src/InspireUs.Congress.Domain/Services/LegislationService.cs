@@ -14,7 +14,16 @@ namespace InspireUs.Congress.Domain.Services
 
         public async Task<int> AddLegislations(IEnumerable<Legislation> legislations)
         {
-            await _context.AddRangeAsync(legislations);
+            var existingIds = _context.Set<Legislation>()
+                .Where(f => legislations.Select(s => s.Id).Contains(f.Id))
+                .Select(g => g.Id)
+                .ToArray();
+
+            foreach (var member in legislations.Where(f => !existingIds.Contains(f.Id)))
+            {
+                _context.Add(member);
+            }
+
             return await _context.SaveChangesAsync();
         }
     }

@@ -5,10 +5,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - CONGRESS_ADMIN_CONNECTIONSTRING=Server=db;Database=Congress;User Id=sa;Password=Pass@word;TrustServerCertificate=True;
     ports:
       - "80"
       - "443"
     volumes:
       - ~/.aspnet/https:/root/.aspnet/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+  inspireus.congress.webscraper:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
       - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro

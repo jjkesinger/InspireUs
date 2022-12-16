@@ -23,6 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", 
 		Migrations\Dockerfile = Migrations\Dockerfile
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{4467EE49-FDFD-448E-A642-29930E7E3A7B}"
+	ProjectSection(SolutionItems) = preProject
+		Deployment\deploy.ps1 = Deployment\deploy.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InspireUs.Congress.WebScraper", "InspireUs.Congress.WebScraper\InspireUs.Congress.WebScraper.csproj", "{2C756FF3-7023-44DE-B128-3DB0A0D24B49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +64,10 @@ Global
 		{E914611E-D272-4633-9590-5C85EBD7B060}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E914611E-D272-4633-9590-5C85EBD7B060}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E914611E-D272-4633-9590-5C85EBD7B060}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C756FF3-7023-44DE-B128-3DB0A0D24B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C756FF3-7023-44DE-B128-3DB0A0D24B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C756FF3-7023-44DE-B128-3DB0A0D24B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C756FF3-7023-44DE-B128-3DB0A0D24B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

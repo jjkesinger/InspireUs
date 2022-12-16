@@ -7,19 +7,56 @@ services:
       context: .
       dockerfile: InspireUs.Congress.Api/Dockerfile
     depends_on:
-      - selenium
+      - selenium-hub
+      - db
     restart: always
     networks:
       - hub_network
-  selenium:
-    image: seleniarm/standalone-firefox:latest
+  inspireus.congress.webscraper:
+    image: ${DOCKER_REGISTRY-}inspireuswebscraper
+    build:
+      context: .
+      dockerfile: InspireUs.Congress.WebScraper/Dockerfile
+    depends_on:
+      - selenium-hub
+      - db  
+    restart: always
+    networks:
+      - hub_network
+  chrome:
+    image: seleniarm/node-chromium:latest
     shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    networks:
+      - hub_network
+
+  firefox:
+    image: seleniarm/node-chromium:latest
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    networks:
+      - hub_network
+
+  selenium-hub:
+    image: seleniarm/hub:latest
+    container_name: selenium-hub
     restart: always
     ports:
+      - "4442:4442"
+      - "4443:4443"
       - "4444:4444"
-      - "7900:7900"
     networks:
-       - hub_network
+      - hub_network
   db:
     image: mcr.microsoft.com/azure-sql-edge:latest
     environment:
@@ -34,6 +71,8 @@ services:
     build:
       context: .
       dockerfile: Migrations/Dockerfile
+    depends_on:
+      - db
     networks:
       - hub_network
 

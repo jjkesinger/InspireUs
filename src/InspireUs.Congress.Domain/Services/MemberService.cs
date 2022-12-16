@@ -16,51 +16,33 @@ namespace InspireUs.Congress.Domain.Services
 
 		public async Task<int> AddMembers(IEnumerable<Member> members)
 		{
-			await _context.AddRangeAsync(members);
+			var existingIds = _context.Set<Member>()
+				.Where(f => members.Select(s => s.Id).Contains(f.Id))
+				.Select(g => g.Id)
+				.ToArray();
+
+			foreach(var member in members.Where(f => !existingIds.Contains(f.Id)))
+			{
+				_context.Add(member);
+			}
+			
 			return await _context.SaveChangesAsync();
 		}
 
-		public IAsyncEnumerable<Member> GetMembersAsyncEnumerable()
+		public async Task<IEnumerable<Member>> GetMembers()
 		{
-			return _context.Set<Member>()
-				.AsNoTracking()
+            return await _context.Set<Member>()
+				.Include(f => f.Legislations)
+                .AsNoTracking()
 				.Select(member =>
 					new Member(member.Id, member.FirstName,
 					member.MiddleName, member.LastName, member.District,
 					member.Party, member.ServiceHistory, member.PictureUrl,
 					member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
 					member.Legislations))
-                .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsyncEnumerable)}")
-                .AsAsyncEnumerable();
-		}
-
-		public async Task<List<Member>> GetMembersAsync()
-		{
-            return await _context.Set<Member>()
-                .AsNoTracking()
-				.Select(member =>
-                    new Member(member.Id, member.FirstName,
-                    member.MiddleName, member.LastName, member.District,
-                    member.Party, member.ServiceHistory, member.PictureUrl,
-                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
-                    member.Legislations))
-                .TagWith($"{nameof(MemberService)}|{nameof(GetMembersAsync)}")
+				.TagWith($"{nameof(MemberService)}|{nameof(GetMembers)}")
                 .ToListAsync();
 		}
-
-        public List<Member> GetMembersSync()
-        {
-            return _context.Set<Member>()
-                .AsNoTracking()
-                .Select(member =>
-                    new Member(member.Id, member.FirstName,
-                    member.MiddleName, member.LastName, member.District,
-                    member.Party, member.ServiceHistory, member.PictureUrl,
-                    member.Address, member.Phone, member.WebsiteUrl, member.ContactUrl,
-                    member.Legislations))
-                .TagWith($"{nameof(MemberService)}|{nameof(GetMembersSync)}")
-                .ToList();
-        }
     }
 }
 

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "InspireUs.Congress.WebScraper": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -29,8 +29,9 @@ public static class ServiceRegistration
             if (isDevelopment)
             {
                 options.EnableSensitiveDataLogging();
-                //options.UseModel(CompiledModels.CongressDbContextModel.Instance);
             }
+
+            //options.UseModel(CompiledModels.CongressDbContextModel.Instance);
         });
 
         services.AddDomain();

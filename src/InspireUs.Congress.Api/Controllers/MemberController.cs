@@ -18,9 +18,9 @@ namespace InspireUs.Congress.Api.Controllers
 		}
 
         [HttpGet(Name = "GetMembers")]
-        public IAsyncEnumerable<MemberModel> GetMembers()
-		{
-			var members = _memberService.GetMembersAsyncEnumerable();
+        public async Task<IEnumerable<MemberModel>> GetMembers()
+        {
+            var members = await _memberService.GetMembers();
             return members.Select(member => new MemberModel
             {
                 FirstName = member.FirstName,
@@ -42,60 +42,6 @@ namespace InspireUs.Congress.Api.Controllers
                     Title = l.Title
                 })
             });
-		}
-
-        [HttpGet(Name = "GetAllMembersAsync")]
-        public async Task<IEnumerable<MemberModel>> GetAllMembersAsync()
-        {
-            var members = await _memberService.GetMembersAsync();
-            return members.Select(member => new MemberModel
-            {
-                FirstName = member.FirstName,
-                LastName = member.LastName,
-                MiddleName = member.MiddleName,
-                State = member.District.State.GetDescription(),
-                District = member.District.DistrictNumber?.ToString(),
-                Party = member.Party.GetDescription(),
-                MemberType = member.MemberType.GetDescription(),
-                ServiceHistory = member.ServiceHistory.Select(h => new ServiceTimeModel
-                {
-                    StartYear = h.StartYear,
-                    EndYear = h.EndYear,
-                    MemberType = h.MemberType.GetDescription()
-                }),
-                Legislation = member.Legislations.Select(l => new LegislationModel
-                {
-                    Name = l.BillNumber,
-                    Title = l.Title
-                })
-            });
-        }
-
-        [HttpGet(Name = "GetMembersSync")]
-        public List<MemberModel> GetMembersSync()
-        {
-            var members = _memberService.GetMembersSync();
-            return members.Select(member => new MemberModel
-            {
-                FirstName = member.FirstName,
-                LastName = member.LastName,
-                MiddleName = member.MiddleName,
-                State = member.District.State.GetDescription(),
-                District = member.District.DistrictNumber?.ToString(),
-                Party = member.Party.GetDescription(),
-                MemberType = member.MemberType.GetDescription(),
-                ServiceHistory = member.ServiceHistory.Select(h => new ServiceTimeModel
-                {
-                    StartYear = h.StartYear,
-                    EndYear = h.EndYear,
-                    MemberType = h.MemberType.GetDescription()
-                }),
-                Legislation = member.Legislations.Select(l => new LegislationModel
-                {
-                    Name = l.BillNumber,
-                    Title = l.Title
-                })
-            }).ToList();
         }
     }
 }

@@ -26,11 +26,10 @@
     <None Remove="Selenium.WebDriver" />
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="Controllers\" />
-    <None Remove="Models\" />
     <None Remove="System.Linq.Async" />
     <None Remove="DesignTime\" />
-    <None Remove="Services\" />
     <None Remove="Selenium.Support" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InspireUs.Congress.Domain\InspireUs.Congress.Domain.csproj">
@@ -45,8 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="DesignTime\" />
-    <Folder Include="Services\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

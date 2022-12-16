@@ -4,11 +4,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace InspireUs.Congress.Domain.Model.Configuration
 {
-    public class CongressConfiguration : IEntityTypeConfiguration<Congress>
+    public class CongressConfiguration : IEntityTypeConfiguration<UsCongress>
     {
-        public void Configure(EntityTypeBuilder<Congress> builder)
+        public void Configure(EntityTypeBuilder<UsCongress> builder)
         {
             builder.HasKey(f => f.Nth);
+            builder.Property(f => f.Nth).HasMaxLength(10);
+            builder.Property(f => f.StartDate).IsRequired(true);
+            builder.Property(f => f.EndDate).IsRequired(true);
+
             builder.HasData(GetCongressUpUntil(118));
 
             builder.HasMany(f => f.Legislations)
@@ -16,12 +20,18 @@ namespace InspireUs.Congress.Domain.Model.Configuration
                 .HasForeignKey(k => k.CongressNth);
         }
 
-        private List<Congress> GetCongressUpUntil(int last)
+        private List<UsCongress> GetCongressUpUntil(int last)
         {
-            var congress = new List<Congress>();
+            var start = 1789;
+            var end = 1790;
+
+            var congress = new List<UsCongress>();
             for (int i = 1; i <= last; i++)
             {
-                congress.Add(new Congress(GetNumberWithOrdinalSuffix(i)));
+                congress.Add(new UsCongress(GetNumberWithOrdinalSuffix(i), null, start, end));
+
+                start = start + 2;
+                end = end + 2;
             }
 
             return congress;
