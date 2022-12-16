@@ -27,12 +27,12 @@ public class Worker : BackgroundService
             query = $"{{\"source\":\"legislation\",\"congress\":{i},\"type\":\"bills\"}}";
             var query2 = $"{{\"source\":\"legislation\",\"congress\":{i - 1},\"type\":\"bills\"}}";
 
-            var task = Task.Run(() => ProcessQueryMessage(query, stoppingToken));
-            var task2 = Task.Run(() => ProcessQueryMessage(query2, stoppingToken));
+            var task = Task.Run(() => ProcessQueryMessage(query, stoppingToken), stoppingToken);
+            var task2 = Task.Run(() => ProcessQueryMessage(query2, stoppingToken), stoppingToken);
             await Task.WhenAll(task, task2);
         }
 
-        await Task.Delay(1000 * 60 * 15, stoppingToken);
+        await Task.Delay(1000 * 60 * 5, stoppingToken);
     }
 
     private async Task ProcessQueryMessage(string query, CancellationToken stoppingToken)

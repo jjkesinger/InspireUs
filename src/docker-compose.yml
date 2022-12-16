@@ -59,6 +59,7 @@ services:
       - "4444:4444"
     networks:
       - hub_network
+
   db:
     image: mcr.microsoft.com/azure-sql-edge:latest
     environment:
@@ -68,6 +69,7 @@ services:
       - "1433:1433"
     networks:
       - hub_network
+
   migration_bundle:
     image: ${DOCKER_REGISTRY-}congress_migrationbdl
     build:
