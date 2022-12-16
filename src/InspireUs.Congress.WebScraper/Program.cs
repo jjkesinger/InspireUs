@@ -27,15 +27,14 @@ public class Program
                 services.AddInfrastructure(connectionString, isDev);
                 services.AddHostedService<Worker>();
                 services.AddScoped<WebScrapingServiceBuilder>();
-                services.AddScoped<ICreateWebDriver, CreateRemoteWebDriver>((services) =>
+                services.AddScoped<ICreateWebDriver, CreateRemoteWebDriver>((s) =>
                 {
                     var options = new ChromeOptions();
                     var seleniumUrls = builder.Configuration.GetConnectionString("SeleniumUrls");
                     ArgumentException.ThrowIfNullOrEmpty(seleniumUrls);
 
-                    return new CreateRemoteWebDriver(seleniumUrls.Split(','), options);
+                    return new CreateRemoteWebDriver(seleniumUrls, options);
                 });
-                
             })
             .Build();
         

@@ -8,53 +8,19 @@ namespace InspireUs.Congress.WebScraper
     public class CreateRemoteWebDriver : ICreateWebDriver
     {
         private readonly DriverOptions _driverOptions;
-        private readonly IEnumerable<string> _urls;
+        private readonly string _url;
 
-        public CreateRemoteWebDriver(IEnumerable<string> urls,
-            DriverOptions options)
+        public CreateRemoteWebDriver(string url, DriverOptions options)
         {
+            ArgumentNullException.ThrowIfNull(url, nameof(url));
+
             _driverOptions = options;
-            _urls = urls;
+            _url = url;
         }
 
         public IWebDriver Create()
         {
-            var url = GetAvailableUrl();
-            ArgumentNullException.ThrowIfNull(url, nameof(url));
-
-            return new RemoteWebDriver(new Uri(url), _driverOptions);
-        }
-
-        private string GetAvailableUrl()
-        {
-            string? url = null;
-            do
-            {
-                url = GetAvailableRemote();
-            }
-            while (string.IsNullOrEmpty(url));
-
-            return url;
-        }
-
-        private string? GetAvailableRemote()
-        {
-            try
-            {
-                foreach (var url in _urls)
-                {
-                    var remotedriver = new RemoteWebDriver(new Uri(url), _driverOptions);
-                    remotedriver.Quit();
-                    remotedriver.Dispose();
-                    return url;
-                }
-
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-            return null;
+            return new RemoteWebDriver(new Uri(_url), _driverOptions);
         }
     }
 
